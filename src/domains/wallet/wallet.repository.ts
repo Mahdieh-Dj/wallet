@@ -1,4 +1,5 @@
 import { Injectable } from "@nestjs/common";
+import { Prisma } from "@prisma/client";
 // Services
 import { PrismaService } from "nestjs-prisma";
 
@@ -11,6 +12,19 @@ export class WalletRepository {
       where: {
         user_id,
       },
+    });
+  }
+
+  async update(
+    id: number,
+    data: Prisma.WalletUpdateInput,
+    tx?: Prisma.TransactionClient,
+  ) {
+    return (tx ? tx : this.db).wallet.update({
+      where: {
+        id,
+      },
+      data,
     });
   }
 }

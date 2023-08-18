@@ -1,7 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { Transform, Type } from "class-transformer";
 import { IsNumber, Min } from "class-validator";
-import { log } from "console";
 
 export class GetUserWalletBalanceParamsDto {
   @ApiProperty({
